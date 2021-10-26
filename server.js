@@ -11,12 +11,12 @@ const task = new AsyncTask(
 )
 
 // Schedule run to run every 5 minutes
-const job = new SimpleIntervalJob({ minutes: 1, }, task)
+const job = new SimpleIntervalJob({ minutes: 5, }, task)
 scheduler.addSimpleIntervalJob(job)
 
 function handleScrapeResult(available) {
   console.log(`Handling result for ${(new Date).toLocaleString()}:`)
-  if (!available) {
+  if (available) {
     console.log('Result found, sending email')
     mailer()
     scheduler.stop()
