@@ -18,7 +18,7 @@ scheduler.addSimpleIntervalJob(job)
 
 function handleScrapeResult(available) {
   console.log(`Handling result for ${(new Date).toLocaleString()}:`)
-  if (available) {
+  if (!available) {
     console.log('Result found, sending email')
     mailer()
     scheduler.stop()

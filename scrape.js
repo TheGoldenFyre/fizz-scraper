@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 IsAvailable = async () => {
-  const browser = await puppeteer.launch({headless: false});
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto('https://www.the-fizz.com/en/search-nl/#/searchcriteria=BUILDING:FIZZ_UTRECHT;AREA:UTRECHT'); 
   await page.waitForTimeout(8000);
