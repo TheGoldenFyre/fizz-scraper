@@ -2,8 +2,6 @@ const { ToadScheduler, SimpleIntervalJob, AsyncTask } = require('toad-scheduler'
 const scraper = require("./scrape");
 const mailer = require("./mailjet")
 
-require('./mailjet')()
-
 const scheduler = new ToadScheduler()
 
 const task = new AsyncTask(
