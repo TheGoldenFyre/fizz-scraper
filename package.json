@@ -1,0 +1,16 @@
+{
+  "name": "fizz-scraper",
+  "version": "1.0.0",
+  "description": "Scrape the The Fizz website for new houses bc the housing market's f*cked",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thomas van der Plas",
+  "license": "ISC",
+  "dependencies": {
+    "node-mailjet": "^3.3.4",
+    "puppeteer": "^10.4.0",
+    "toad-scheduler": "^1.5.0"
+  }
+}
