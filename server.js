@@ -11,17 +11,27 @@ const task = new AsyncTask(
 )
 
 // Schedule run to run every 5 minutes
-const job = new SimpleIntervalJob({ minutes: 5, }, task)
+const job = new SimpleIntervalJob({ minutes: 2 }, task)
 scheduler.addSimpleIntervalJob(job)
 
+
+let waitingForReset = false
 function handleScrapeResult(available) {
-  console.log(`Handling result for ${(new Date).toLocaleString()}:`)
+  let dateString = (new Date).toLocaleString()
+  console.log(`Handling result for ${dateString}:`)
   if (available) {
-    console.log('Result found, sending email')
-    mailer()
-    scheduler.stop()
+    if (!waitingForReset) {
+      console.log('Result found, sending email')
+      mailer()
+      //scheduler.stop()
+      waitingForReset = true;
+    }
+    else {
+      console.log("Email already sent for this update.")
+    }
   }
   else {
     console.log('Nothing found.')
+    waitingForReset = false
   }
 }
