@@ -11,7 +11,7 @@ const task = new AsyncTask(
 )
 
 // Schedule run to run every 5 minutes
-const job = new SimpleIntervalJob({ seconds: 30 }, task)
+const job = new SimpleIntervalJob({ minutes: 1 }, task)
 scheduler.addSimpleIntervalJob(job)
 
 
@@ -24,7 +24,7 @@ function handleScrapeResult(scrapeRes) {
   if (scrapeRes.resultsFound) {   
     let count = scrapeRes.props
     console.log(`Currently listing ${count} studios`)
-    
+
     if (previousCount < count) {
       console.log('Result found, sending email')
       mailer(count)
