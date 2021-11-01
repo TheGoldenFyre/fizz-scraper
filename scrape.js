@@ -7,8 +7,13 @@ IsAvailable = async () => {
   await page.waitForTimeout(8000);
   let r = await page.evaluate(() => {
     let res = document.getElementsByClassName("search-results")
-    if (res.length > 0) return Promise.resolve(true);
-    else return Promise.resolve(false);
+    if (res.length > 0) {
+      let ss = document.getElementsByClassName("single-property")
+      return Promise.resolve( {resultsFound: true, props: ss.length} );
+    } 
+    else {
+      return Promise.resolve( {resultsFound: false} );
+    }
   })
   await browser.close();
   return r;
