@@ -24,7 +24,7 @@ function handleScrapeResult(scrapeRes) {
   if (scrapeRes.resultsFound) {   
     let count = scrapeRes.props
     let priceString = ""
-    for (let p of scrapeRes.prices) priceString = `${p}, `
+    for (let p of scrapeRes.prices) priceString += `${p}, `
     console.log(`Currently listing ${count} studios`)
     console.log(`Prices: ${priceString}`)
 
